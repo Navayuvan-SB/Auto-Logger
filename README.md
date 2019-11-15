@@ -1,7 +1,7 @@
 # Auto-Logger
 This python file is for the developers and the programmers who wish to log what they do with the datetime stamp.
 
-**Note - This program is currently under development and configured only for `linux distros`**
+**Feel free to Report any bugs or suggestions in `issues` section of this repo** :fire: :heart_eyes:
 
 ## What are the Requirements?
 
@@ -23,4 +23,4 @@ This python file is for the developers and the programmers who wish to log what 
 
 ## Where to view my logs?
 
-- The logs which you have created are stored in the file **my_log.txt** inside the folder named **AutoLogger** in your **home** 
+- The logs which you have created are stored in the file **my_log.txt** inside the folder **AutoLogger** in your **home** directory.
