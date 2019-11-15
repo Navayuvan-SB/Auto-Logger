@@ -12,7 +12,7 @@ This python file is for the developers and the programmers who wish to log what 
 - There is no specific installation for this program. Clone the Repo and just run the python file.
 
 ```
-python make_log.py
+/$: python make_log.py
 ```
 
 ## How should I use this program?
