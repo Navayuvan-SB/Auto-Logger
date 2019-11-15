@@ -23,4 +23,4 @@ This python file is for the developers and the programmers who wish to log what 
 
 ## Where to view my logs?
 
-- The logs which you have created are stored in the file **my_log.txt** inside the folder **AutoLogger** in your **home** directory.
+- The logs which you have created are stored in the file **my_log.txt** inside the folder **AutoLogger** in your **Home** directory.
