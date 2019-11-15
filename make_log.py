@@ -25,11 +25,6 @@ flag = True
 
 # Get the input and write in the file
 while(flag):
-    # datetime object containing current date and time
-    now = datetime.now()
- 
-    # dd/mm/YY H:M:S
-    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
     # Read the input from user
     log_text = input("Log:  ")
@@ -42,6 +37,13 @@ while(flag):
         f.close()
     
     else:
+
+        # datetime object containing current date and time
+        now = datetime.now()
+ 
+        # dd/mm/YY H:M:S
+        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+
         # Format the text to write
         text_to_write = dt_string + " \t " + log_text + "\n\n"
 
