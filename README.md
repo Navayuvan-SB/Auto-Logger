@@ -1,7 +1,7 @@
 # Auto-Logger
 This python file is for the developers and the programmers who wish to log what they do with the datetime stamp.
 
-**Feel free to Report any bugs or suggestions in `issues` section of this repo** :fire: :heart_eyes:
+**Feel free to Report any bugs or suggestions in `issues` section of this repo** :fire: :heart_eyes: 
 
 ## What are the Requirements?
 
