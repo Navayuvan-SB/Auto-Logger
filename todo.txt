@@ -1,0 +1,7 @@
+1   Options:
+    X 2.1     --message, -m, empty                == For log only text
+    X 2.2     --command, -c, <command>            == For Log the single commands
+    X 2.3     --terminal, -t                      == Acts as a terminal and log all the output 
+
+2   Features:
+    2.1     Find errors and ask whether to mark as Error or Not
