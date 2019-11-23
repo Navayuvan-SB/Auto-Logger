@@ -190,7 +190,7 @@ try:
                                 $ log --message This is an example message
                         
             Command log mode:
-                [command], -c, --command                Type the command and it will be logged with the output in
+                -c, --command                           Type the command and it will be logged with the output in
                                                         my_terminal_log.txt file
                         Eg: log <command>
                                 $ log npm install firebase
@@ -247,7 +247,7 @@ try:
         text()
 
     # If the option was to log with the output from the terminal command
-    elif (sys.argv[1] == "--command" or sys.argv[1] == "-c" and len(sys.argv) > 1):
+    elif (sys.argv[1] == "--command" or sys.argv[1] == "-c"):
         command()
 
     # If the option was terminal mode

@@ -29,7 +29,7 @@ $: python setup.py
                                 $ log --message This is an example message
                         
             Command log mode:
-                [command], -c, --command                Type the command and it will be logged with 
+                -c, --command                           Type the command and it will be logged with 
                                                         output in terminal_log.txt file
                         Eg: log <command>
                                 $ log npm install firebase
