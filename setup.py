@@ -16,6 +16,11 @@ This file will install AutoLogger in your machine and let you use the program as
 # Setup Method
 def setup():
 
+    # Upgrading pip
+    print("Upgrading pip...")
+    os.system("pip install --upgrade pip")
+    print("Pip upgraded successfully...")
+
     # Instaling the requirements
     print("Installing the required package...")
     os.system('pip install -r requirements.txt')
