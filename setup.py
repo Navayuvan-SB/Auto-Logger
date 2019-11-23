@@ -18,8 +18,8 @@ def setup():
 
     # Upgrading pip
     print("Upgrading pip...")
-    os.system("pip install --upgrade pip")
-    print("Pip upgraded successfully...")
+    os.system('pip install --upgrade pip')
+    print("Pip upgraded successfully...\n")
 
     # Instaling the requirements
     print("Installing the required package...")
@@ -39,7 +39,7 @@ def setup():
     # Removing the log file in current location
     print("Removing the original log file...")
     os.system('rm log')
-    print("File removed successfully...")
+    print("File removed successfully...\n")
 
     # Printing Get Started message
     print("""
