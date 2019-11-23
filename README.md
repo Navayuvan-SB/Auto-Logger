@@ -8,7 +8,7 @@ This program is for the developers and the programmers who wish to log what they
 - Download this repo and run the setup.py file
 
 ```
-/$: python setup.py
+$: python setup.py
 ```
 
 ## How should I use this program?
