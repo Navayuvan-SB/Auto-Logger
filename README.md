@@ -31,9 +31,7 @@ $: python setup.py
             Command log mode:
                 -c, --command                           Type the command and it will be logged with 
                                                         output in terminal_log.txt file
-                        Eg: log <command>
-                                $ log npm install firebase
-                            log -c <command>
+                        Eg: log -c <command>
                                 $ log -c npm install firebase
                             log --command <command>
                                 $ log --command npm install firebase
