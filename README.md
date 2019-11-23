@@ -5,6 +5,7 @@ This program is for the developers and the programmers who wish to log what they
 
 ## How should I Install it?
 
+- This Application runs on python 3.x 
 - Download this repo and run the setup.py file
 
 ```
