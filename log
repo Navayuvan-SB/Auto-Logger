@@ -137,7 +137,7 @@ try:
                 message_text = " ".join(cmd)
                 
                 # Writing into the file
-                f.write("Message: " + message_text[3:])
+                f.write("Message: " + message_text[3:] + "\n")
 
                 # Closing the opened file
                 f.close()
