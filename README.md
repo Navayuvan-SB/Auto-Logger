@@ -1,5 +1,5 @@
 # Auto-Logger
-This program is for the developers and the programmers who wish to log what they do with the output in the console.
+This program is for the developers and the programmers who wish to log what they do with the output in the console. This program is specially developed for `debian based linux machines`. If you want for `MAC and Windows`, please let me know in the `issues` section of this repo.
 
 **Feel free to Report any bugs or suggestions in `issues` section of this repo** :fire: :heart_eyes: 
 
