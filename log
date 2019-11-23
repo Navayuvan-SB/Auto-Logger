@@ -77,6 +77,18 @@ try:
         # Opening a file
         f = open(path, "a+")
 
+        # datetime object containing current date and time
+        now = datetime.now()
+
+        # dd/mm/YY H:M:S
+        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+
+        # Format the text to write
+        text_to_write = dt_string + " \t " + "Command: " + " ".join(cmd[2:]) + "\n"
+
+        # write command in file
+        f.write(text_to_write)
+
         # Print the output line by line
         for line in iter(out.stdout.readline, b''):
             temp = str(line)
@@ -153,8 +165,15 @@ try:
                 # Opening a file
                 f = open(path, "a+")
 
+                # datetime object containing current date and time
+                now = datetime.now()
+
+                # dd/mm/YY H:M:S
+                dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+
                 # Write the command 
-                f.write("Command: " + " ".join(cmd))
+                text_to_write = dt_string + " \t " + "Command: " + cmd[2:] + "\n"
+                f.write(text_to_write)
                 f.write("\n")
 
                 # Print the output line by line
