@@ -16,7 +16,8 @@ This program is for the developers and the programmers who wish to log what they
     Usage: log [OPTIONS] [COMMAND]
 
     Options:
-        [empty], -m, --message                  Type the log message and press 'Enter' to log into the file. Double tap 'Enter' to exit the program
+        [empty], -m, --message                  Type the log message and press 'Enter' to log into the 
+                                                file. Double tap 'Enter' to exit the program
                 Eg: log <empty>
                         $ log
                     log -m <message>
@@ -25,7 +26,8 @@ This program is for the developers and the programmers who wish to log what they
                         $ log --message This is an example message
                 
         
-        [command], -c, --command                Type the command and it will be logged with the output in my_terminal_log.txt file
+        [command], -c, --command                Type the command and it will be logged with the output in
+                                                my_terminal_log.txt file
                 Eg: log <command>
                         $ log npm install firebase
                     log -c <command>
@@ -33,7 +35,8 @@ This program is for the developers and the programmers who wish to log what they
                     log --command <command>
                         $ log --command npm install firebase
 
-        -t, --terminal                          Enter into terminal mode. The commands which you run will be logged with the output into my_terminal_log.txt file
+        -t, --terminal                          Enter into terminal mode. The commands which you run will 
+                                                be logged with the output into my_terminal_log.txt file
                 Eg: $ log -t
                     $ log --terminal
 
