@@ -28,7 +28,8 @@ This program is for the developers and the programmers who wish to log what they
                                 $ log --message This is an example message
                         
             Command log mode:
-                [command], -c, --command                Type the command and it will be logged with the                                           output in terminal_log.txt file
+                [command], -c, --command                Type the command and it will be logged with 
+                                                        output in terminal_log.txt file
                         Eg: log <command>
                                 $ log npm install firebase
                             log -c <command>
@@ -37,7 +38,8 @@ This program is for the developers and the programmers who wish to log what they
                                 $ log --command npm install firebase
 
             Terminal mode:
-                -t, --terminal                          Enter into terminal mode. The commands which you                                          run will be logged with the output into 
+                -t, --terminal                          Enter into terminal mode. The commands which you  
+                                                        run will be logged with the output into 
                                                         terminal_log.txt file
                         Eg: $ log -t
                             $ log --terminal
