@@ -222,7 +222,7 @@ try:
         try:
             os.mkdir(os.path.expanduser("~/AutoLogger"))
             print("Seems like AutoLogger directory is missing :(")
-            print("Creating AutoLogger directory in {%s} ...".format(os.path.expanduser("~")))
+            print("Creating AutoLogger directory in " + os.path.expanduser("~") +  "...")
             print("AutoLogger was initialized successfully, Enjoy using AutoLogger :)")
 
         except FileExistsError:
