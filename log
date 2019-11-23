@@ -5,13 +5,25 @@
 =================================================== """
 # Import Statements
 from datetime import datetime
-import os.path
+import os.path 
+from os import system, name 
+from time import sleep 
 import sys
 import subprocess
 import socket
 import getpass
 from termcolor import colored
 
+# define our clear function 
+def clear(): 
+  
+    # for windows 
+    if name == 'nt': 
+        _ = system('cls') 
+  
+    # for mac and linux(here, os.name is 'posix') 
+    else: 
+        _ = system('clear') 
 
 # Log only the text which user enter
 def text():
@@ -77,7 +89,7 @@ def command():
 def terminal():
 
     print("""
-        Terminal Mode is started... Your all terminal activities will be logged into the log file
+        Terminal Mode is enabled... Your all terminal activities will be logged into the log file
         Enter 'exit()' to exit terminal mode
         """)
 
@@ -87,6 +99,23 @@ def terminal():
         # Print the terminal text
         term_starter = colored(getpass.getuser() + "@" + socket.gethostname(), 'green') + colored(":", 'white') + colored(os.getcwd(), 'blue') + "$ "
         cmd = input(term_starter)
+
+        # Display the terminal line when pressed 'Enter'
+        while(cmd.strip() == ""):
+            term_starter = colored(getpass.getuser() + "@" + socket.gethostname(), 'green') + colored(":", 'white') + colored(os.getcwd(), 'blue') + "$ "
+            cmd = input(term_starter)
+        
+        # Clear the output and show one terminal line
+        while (cmd == "clear"):
+
+            # Clear the outputs
+            clear()
+
+            # Display the one line terminal line
+            term_starter = colored(getpass.getuser() + "@" + socket.gethostname(), 'green') + colored(":", 'white') + colored(os.getcwd(), 'blue') + "$ "
+            cmd = input(term_starter)
+            
+        
         cmd = cmd.split(" ")
         if (cmd[0] == "exit()"):
             print("""
