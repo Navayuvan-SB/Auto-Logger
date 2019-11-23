@@ -160,20 +160,30 @@ def help():
     Options:
         [empty], -m, --message                  Type the log message and press 'Enter' to log into the file.
                                                 Double tap 'Enter' to exit the program
+                Eg: log <empty>
+                        $ log
+                    log -m <message>
+                        $ log -m This is an example message
+                    log --message <message>
+                        $ log --message This is an example message
+                
         
         [command], -c, --command                Type the command and it will be logged with the output in
                                                 my_terminal_log.txt file
+                Eg: log <command>
+                        $ log npm install firebase
+                    log -c <command>
+                        $ log -c npm install firebase
+                    log --command <command>
+                        $ log --command npm install firebase
 
         -t, --terminal                          Enter into terminal mode. The commands which you run will be
                                                 logged with the output into my_terminal_log.txt file
+                Eg: $ log -t
+                    $ log --terminal
 
     Additional Informations:
         ~ The output of the logs will be stored in 'AutoLogger' directory of your Home directory
-
-        ~ You can use 'log' as alias of -m, --message
-
-        ~ you can use 'log [command]' as alias of -c, --command
-
         ~ Use 'exit()' in 'Terminal mode' to exit 'Terminal mode'
     """)
 
