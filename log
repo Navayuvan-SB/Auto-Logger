@@ -13,227 +13,227 @@ import subprocess
 import socket
 import getpass
 from termcolor import colored
+import click
 
-try:
 
-    # define our clear function 
-    def clear(): 
-    
-        # for windows 
-        if name == 'nt': 
-            _ = system('cls') 
-    
-        # for mac and linux(here, os.name is 'posix') 
-        else: 
-            _ = system('clear') 
+# define our clear function 
+def clear(): 
 
-    # Log only the text which user enter
-    def text():
+    # for windows 
+    if name == 'nt': 
+        _ = system('cls') 
 
-        # Initialise Flag as True
-        flag = True
+    # for mac and linux(here, os.name is 'posix') 
+    else: 
+        _ = system('clear') 
 
-        # Get the input and write in the file
-        while(flag):
+# Log only the text which user enter
+def text():
 
-            # Read the input from user
-            log_text = input("Log:  ")
+    # Initialise Flag as True
+    flag = True
 
-            # Check if the end condition satisfied
-            if (log_text == ""):
+    # Get the input and write in the file
+    while(flag):
 
-                # Set the Flag to False and close the opened file
-                flag = False
-                f.close()
-            
-            else:
+        # Read the input from user
+        log_text = input("Log:  ")
 
-                # datetime object containing current date and time
-                now = datetime.now()
+        # Check if the end condition satisfied
+        if (log_text == ""):
+
+            # Set the Flag to False and close the opened file
+            flag = False
+            f.close()
         
-                # dd/mm/YY H:M:S
-                dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+        else:
 
-                # Format the text to write
-                text_to_write = dt_string + " \t " + log_text + "\n\n"
+            # datetime object containing current date and time
+            now = datetime.now()
+    
+            # dd/mm/YY H:M:S
+            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
-                # Write to the file
-                f.write(text_to_write) 
+            # Format the text to write
+            text_to_write = dt_string + " \t " + log_text + "\n\n"
 
-    # Log the output of the command
-    def command():
+            # Write to the file
+            f.write(text_to_write) 
 
-        # List for get the commands as system arguments
-        cmd = []
-        for arg in sys.argv:
-            cmd.append(arg)
+# Log the output of the command
+def command():
 
-        # Run the command through subprocess pipe
-        out = subprocess.Popen(cmd[2:], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    # List for get the commands as system arguments
+    cmd = []
+    for arg in sys.argv:
+        cmd.append(arg)
+
+    # Run the command through subprocess pipe
+    out = subprocess.Popen(cmd[2:], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+    # Expanding the directory
+    path = os.path.expanduser(os.path.join("~/AutoLogger/", "terminal_log.txt"))
+
+    # Opening a file
+    f = open(path, "a+")
+
+    # datetime object containing current date and time
+    now = datetime.now()
+
+    # dd/mm/YY H:M:S
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+
+    # Format the text to write
+    text_to_write = dt_string + " \t " + "Command: " + " ".join(cmd[2:]) + "\n"
+
+    # write command in file
+    f.write(text_to_write)
+
+    # Print the output line by line
+    for line in iter(out.stdout.readline, b''):
+        temp = str(line)
+        temp = temp[2: len(temp)-3]
+        print (temp)
+        f.write(temp)
+        f.write("\n")
+
+    f.close()
+
+# Turn into Terminal Mode
+def terminal():
+
+    print("""
+        Terminal Mode is enabled... Your all terminal activities will be logged into the log file
+        Enter 'exit()' to exit terminal mode
+        """)
+
+    # Get the input untill exit() command is given
+    while(True):
+
+        # Print the terminal text
+        term_starter = colored(getpass.getuser() + "@" + socket.gethostname(), 'green') + colored(":", 'white') + colored(os.getcwd(), 'blue') + "$ "
+        cmd = input(term_starter)
+
+        # Display the terminal line when pressed 'Enter'
+        while(cmd.strip() == ""):
+            term_starter = colored(getpass.getuser() + "@" + socket.gethostname(), 'green') + colored(":", 'white') + colored(os.getcwd(), 'blue') + "$ "
+            cmd = input(term_starter)
+        
+        # Clear the output and show one terminal line
+        while (cmd == "clear"):
+
+            # Clear the outputs
+            clear()
+
+            # Display the one line terminal line
+            term_starter = colored(getpass.getuser() + "@" + socket.gethostname(), 'green') + colored(":", 'white') + colored(os.getcwd(), 'blue') + "$ "
+            cmd = input(term_starter)
+    
+        
+        cmd = cmd.split(" ")
+        if (cmd[0] == "exit()"):
+            print("""
+            Exiting Terminal Mode...
+            """)
+            break
 
         # Expanding the directory
         path = os.path.expanduser(os.path.join("~/AutoLogger/", "terminal_log.txt"))
 
         # Opening a file
         f = open(path, "a+")
-
-        # datetime object containing current date and time
-        now = datetime.now()
-
-        # dd/mm/YY H:M:S
-        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-
-        # Format the text to write
-        text_to_write = dt_string + " \t " + "Command: " + " ".join(cmd[2:]) + "\n"
-
-        # write command in file
-        f.write(text_to_write)
-
-        # Print the output line by line
-        for line in iter(out.stdout.readline, b''):
-            temp = str(line)
-            temp = temp[2: len(temp)-3]
-            print (temp)
-            f.write(temp)
-            f.write("\n")
-
-        f.close()
-
-    # Turn into Terminal Mode
-    def terminal():
-
-        print("""
-            Terminal Mode is enabled... Your all terminal activities will be logged into the log file
-            Enter 'exit()' to exit terminal mode
-            """)
-
-        # Get the input untill exit() command is given
-        while(True):
-
-            # Print the terminal text
-            term_starter = colored(getpass.getuser() + "@" + socket.gethostname(), 'green') + colored(":", 'white') + colored(os.getcwd(), 'blue') + "$ "
-            cmd = input(term_starter)
-
-            # Display the terminal line when pressed 'Enter'
-            while(cmd.strip() == ""):
-                term_starter = colored(getpass.getuser() + "@" + socket.gethostname(), 'green') + colored(":", 'white') + colored(os.getcwd(), 'blue') + "$ "
-                cmd = input(term_starter)
-            
-            # Clear the output and show one terminal line
-            while (cmd == "clear"):
-
-                # Clear the outputs
-                clear()
-
-                # Display the one line terminal line
-                term_starter = colored(getpass.getuser() + "@" + socket.gethostname(), 'green') + colored(":", 'white') + colored(os.getcwd(), 'blue') + "$ "
-                cmd = input(term_starter)
         
+        # Checking if the command contains the log message
+        if (cmd[0] == "lm"):
             
-            cmd = cmd.split(" ")
-            if (cmd[0] == "exit()"):
-                print("""
-                Exiting Terminal Mode...
-                """)
-                break
+            message_text = " ".join(cmd)
+            
+            # Writing into the file
+            f.write("Message: " + message_text[3:] + "\n")
+
+            # Closing the opened file
+            f.close()
+
+        else:
+
+            # Run the command through subprocess pipe
+            out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
             # Expanding the directory
             path = os.path.expanduser(os.path.join("~/AutoLogger/", "terminal_log.txt"))
 
             # Opening a file
             f = open(path, "a+")
-            
-            # Checking if the command contains the log message
-            if (cmd[0] == "lm"):
-                
-                message_text = " ".join(cmd)
-                
-                # Writing into the file
-                f.write("Message: " + message_text[3:] + "\n")
 
-                # Closing the opened file
-                f.close()
+            # datetime object containing current date and time
+            now = datetime.now()
 
-            else:
+            # dd/mm/YY H:M:S
+            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
-                # Run the command through subprocess pipe
-                out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            # Write the command 
+            text_to_write = dt_string + " \t " + "Command: " + str(cmd[2:]) + "\n"
+            f.write(text_to_write)
+            f.write("\n")
 
-                # Expanding the directory
-                path = os.path.expanduser(os.path.join("~/AutoLogger/", "terminal_log.txt"))
-
-                # Opening a file
-                f = open(path, "a+")
-
-                # datetime object containing current date and time
-                now = datetime.now()
-
-                # dd/mm/YY H:M:S
-                dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-
-                # Write the command 
-                text_to_write = dt_string + " \t " + "Command: " + cmd[2:] + "\n"
-                f.write(text_to_write)
+            # Print the output line by line
+            for line in iter(out.stdout.readline, b''):
+                temp = str(line)
+                temp = temp[2: len(temp)-3]
+                print (temp)
+                f.write(temp)
                 f.write("\n")
 
-                # Print the output line by line
-                for line in iter(out.stdout.readline, b''):
-                    temp = str(line)
-                    temp = temp[2: len(temp)-3]
-                    print (temp)
-                    f.write(temp)
-                    f.write("\n")
+            # Write a closing line for the command
+            f.write("-----------------------------------------------------\n\n")
 
-                # Write a closing line for the command
-                f.write("-----------------------------------------------------\n\n")
+            # Closing the opened file
+            f.close()
 
-                # Closing the opened file
-                f.close()
+# Help manual
+def help():
+    
+    # Printing the help manual
+    print("""
+    Usage: log [OPTIONS] [COMMAND]
 
-    # Help manual
-    def help():
-        
-        # Printing the help manual
-        print("""
-        Usage: log [OPTIONS] [COMMAND]
-
-        Options:
-            Message log mode:
-                [empty], -m, --message                  Type the log message and press 'Enter' to log into the file.
-                                                        Double tap 'Enter' to exit the program
-                        Eg: log <empty>
-                                $ log
-                            log -m <message>
-                                $ log -m This is an example message
-                            log --message <message>
-                                $ log --message This is an example message
-                        
-            Command log mode:
-                -c, --command                           Type the command and it will be logged with the output in
-                                                        my_terminal_log.txt file
-                        Eg: log -c <command>
-                                $ log -c npm install firebase
-                            log --command <command>
-                                $ log --command npm install firebase
-
-            Terminal mode:
-                -t, --terminal                          Enter into terminal mode. The commands which you run will be
-                                                        logged with the output into my_terminal_log.txt file
-                        Eg: $ log -t
-                            $ log --terminal
-
-                lm <message>                            If you want to log a message when you are in 'Terminal mode',
-                                                        you can use this option
-                        Eg: Assume you are in terminal mode 
-                            $: lm This is the message to log
+    Options:
+        Message log mode:
+            [empty], -m, --message                  Type the log message and press 'Enter' to log into the file.
+                                                    Double tap 'Enter' to exit the program
+                    Eg: log <empty>
+                            $ log
+                        log -m <message>
+                            $ log -m This is an example message
+                        log --message <message>
+                            $ log --message This is an example message
                     
-        Additional Informations:
-            ~ The output of the logs will be stored in 'AutoLogger' directory of your Home directory
-            ~ Use 'exit()' in 'Terminal mode' to exit 'Terminal mode'
-        """)
+        Command log mode:
+            -c, --command                           Type the command and it will be logged with the output in
+                                                    my_terminal_log.txt file
+                    Eg: log -c <command>
+                            $ log -c npm install firebase
+                        log --command <command>
+                            $ log --command npm install firebase
 
-    # Create directory if not exists
-    def dir_check():
+        Terminal mode:
+            -t, --terminal                          Enter into terminal mode. The commands which you run will be
+                                                    logged with the output into my_terminal_log.txt file
+                    Eg: $ log -t
+                        $ log --terminal
+
+            lm <message>                            If you want to log a message when you are in 'Terminal mode',
+                                                    you can use this option
+                    Eg: Assume you are in terminal mode 
+                        $: lm This is the message to log
+                
+    Additional Informations:
+        ~ The output of the logs will be stored in 'AutoLogger' directory of your Home directory
+        ~ Use 'exit()' in 'Terminal mode' to exit 'Terminal mode'
+    """)
+
+# Create directory if not exists
+def dir_check():
 
         # Creating AutoLogger Directory if not exist
         try:
@@ -246,36 +246,37 @@ try:
             pass
 
 
-    # Directory Check
-    dir_check()
+# Directory Check
+dir_check()
 
-    # Expanding the directory
-    path = os.path.expanduser(os.path.join("~/AutoLogger/", "log.txt"))
+# Expanding the directory
+path = os.path.expanduser(os.path.join("~/AutoLogger/", "log.txt"))
 
-    # Opening a file
-    f = open(path, "a+")
+# Opening a file
+f = open(path, "a+")
 
-    # If the option was to log the text user type
+# If the option was to log the text user type
+if (len(sys.argv) == 1):
+    text()
 
-    if (len(sys.argv) == 1):
-        text()
+elif (sys.argv[1] == "--message" or sys.argv[1] == "-m"):
+    text()
 
-    elif (sys.argv[1] == "--message" or sys.argv[1] == "-m"):
-        text()
+# If the option was to log with the output from the terminal command
+elif (sys.argv[1] == "--command" or sys.argv[1] == "-c"):
+    command()
 
-    # If the option was to log with the output from the terminal command
-    elif (sys.argv[1] == "--command" or sys.argv[1] == "-c"):
-        command()
+# If the option was terminal mode
+elif (sys.argv[1] == "--terminal" or sys.argv[1] == "-t"):
+    f.close()
+    terminal()
 
-    # If the option was terminal mode
-    elif (sys.argv[1] == "--terminal" or sys.argv[1] == "-t"):
-        f.close()
-        terminal()
+# If the option was help
+elif (sys.argv[1] == "--help"):
+    f.close()
+    help()
 
-    # If the option was help
-    elif (sys.argv[1] == "--help"):
-        f.close()
-        help()
 
-except KeyboardInterrupt:
-    print("\n")
+
+
+
