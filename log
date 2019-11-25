@@ -13,7 +13,6 @@ import subprocess
 import socket
 import getpass
 from termcolor import colored
-import click
 
 
 # define our clear function 
@@ -246,35 +245,42 @@ def dir_check():
             pass
 
 
-# Directory Check
-dir_check()
+def main():
 
-# Expanding the directory
-path = os.path.expanduser(os.path.join("~/AutoLogger/", "log.txt"))
+    # Directory Check
+    dir_check()
 
-# Opening a file
-f = open(path, "a+")
+    # Expanding the directory
+    path = os.path.expanduser(os.path.join("~/AutoLogger/", "log.txt"))
 
-# If the option was to log the text user type
-if (len(sys.argv) == 1):
-    text()
+    # Opening a file
+    f = open(path, "a+")
 
-elif (sys.argv[1] == "--message" or sys.argv[1] == "-m"):
-    text()
+    # If the option was to log the text user type
+    if (len(sys.argv) == 1):
+        text()
 
-# If the option was to log with the output from the terminal command
-elif (sys.argv[1] == "--command" or sys.argv[1] == "-c"):
-    command()
+    elif (sys.argv[1] == "--message" or sys.argv[1] == "-m"):
+        text()
 
-# If the option was terminal mode
-elif (sys.argv[1] == "--terminal" or sys.argv[1] == "-t"):
-    f.close()
-    terminal()
+    # If the option was to log with the output from the terminal command
+    elif (sys.argv[1] == "--command" or sys.argv[1] == "-c"):
+        command()
 
-# If the option was help
-elif (sys.argv[1] == "--help"):
-    f.close()
-    help()
+    # If the option was terminal mode
+    elif (sys.argv[1] == "--terminal" or sys.argv[1] == "-t"):
+        f.close()
+        terminal()
+
+    # If the option was help
+    elif (sys.argv[1] == "--help"):
+        f.close()
+        help()
+
+
+# Calling main function
+if __name__=="__main__":
+    main()
 
 
 

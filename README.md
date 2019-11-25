@@ -10,6 +10,7 @@ This program is for the developers and the programmers who wish to log what they
 
 ```
 $: python setup.py
+$: python3 setup.py
 ```
 
 ## How should I use this program?
@@ -55,3 +56,6 @@ $: python setup.py
 ## Where to view my logs?
 
 - The logs which you have created are stored in the file **log.txt** and **terminal_log.txt** inside the folder **AutoLogger** in your **Home** directory.
+
+## License
+Auto Logger is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.
