@@ -9,7 +9,7 @@ import os
 # Print Welcome message
 print("""
 Welcome to AutoLogger Setup
-This file will install AutoLogger in your machine and let you use the program as terminal command
+This file will install AutoLogger in your machine and let you use the Application as terminal command
 """)
 
 
@@ -60,5 +60,5 @@ if (choice == "Y" or choice == "Yes" or choice == "YES" or choice == "" or choic
 
 else:
 
-    # Print Abort and exit the program
+    # Print Abort and exit the Application
     print("Abort.")
