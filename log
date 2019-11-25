@@ -172,7 +172,7 @@ def terminal():
             dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
             # Write the command 
-            text_to_write = dt_string + " \t " + "Command: " + str(cmd[2:]) + "\n"
+            text_to_write = dt_string + " \t " + "Command: " + " ".join(cmd[2:]) + "\n"
             f.write(text_to_write)
             f.write("\n")
 
