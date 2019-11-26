@@ -29,6 +29,12 @@ def clear():
 # Log only the text which user enter
 def text():
 
+    # Expanding the directory
+    path = os.path.expanduser(os.path.join("~/AutoLogger/", "log.txt"))
+
+    # Opening a file
+    f = open(path, "a+")
+
     # Initialise Flag as True
     flag = True
 
@@ -61,6 +67,12 @@ def text():
 
 # Log the output of the command
 def command():
+
+    # Expanding the directory
+    path = os.path.expanduser(os.path.join("~/AutoLogger/", "log.txt"))
+
+    # Opening a file
+    f = open(path, "a+")
 
     # List for get the commands as system arguments
     cmd = []
@@ -250,12 +262,6 @@ def main():
     # Directory Check
     dir_check()
 
-    # Expanding the directory
-    path = os.path.expanduser(os.path.join("~/AutoLogger/", "log.txt"))
-
-    # Opening a file
-    f = open(path, "a+")
-
     # If the option was to log the text user type
     if (len(sys.argv) == 1):
         text()
@@ -269,12 +275,10 @@ def main():
 
     # If the option was terminal mode
     elif (sys.argv[1] == "--terminal" or sys.argv[1] == "-t"):
-        f.close()
         terminal()
 
     # If the option was help
     elif (sys.argv[1] == "--help"):
-        f.close()
         help()
 
 
